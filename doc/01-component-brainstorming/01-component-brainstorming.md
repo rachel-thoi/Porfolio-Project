@@ -1,8 +1,8 @@
 # Portfolio Part 1: Component Brainstorming
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) then delete this comment -->
-- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) then delete this comment -->
-- **Due Date**: <!-- TODO: fill with due date and time (e.g., 10/17 @ 3:10 PM EST) then delete this comment -->
+- **Name**: Rachel Thoi
+- **Dot Number**: thoi.1
+- **Due Date**:  9/19 @ 1:50 PM EST
 
 ## Assignment Overview
 
@@ -112,6 +112,14 @@ the magnifying glass icon in the upper-right corner or pressing CTRL+K and
 then V. This kind of button combination is called a chord, for whatever
 reason -->
 
+I am a Computer Engineer with a strong interest in building systems that blend technical precision with creativity. My career goal is to pursue opportunities in embedded systems and software development where I can design solutions that are both functional and user-friendly.
+
+For this portfolio, I am especially interested in working on projects such as Music Playlist, which models the organization of songs, Logic Gate, which reflects my passion for digital design and computer architecture, and Clothing, which models the customization of outfits. Working on these project allows me to explore creative applications of engineering in everyday life.
+
+Completing this portfolio project will also give me a stronger opportunity to highlight my skills on my resume and gain a deeper understanding of OSU components, which will benefit me both academically and professionally.
+
+Outside of academics, I enjoy listening to K-pop music, watching anime, and exploring technology that blends both hardware and software, as well as taking on projects that encourage problem-solving and innovation.
+
 ## Assignment
 
 <!-- TODO: read the assignment section then delete this comment -->
@@ -200,68 +208,85 @@ will likely refine your design to make your implementation easier to use.
 
 > Please use this section to share your designs.
 
-- Component Design #1: <!-- TODO: give component a name then delete this comment -->
+- Component Design #1: MusicPlaylist
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - This component models the organization of songs in a playlist. The kernel provides basic functionality for storing and ordering tracks, while the secondary methods allow for playlist management operations such as adding, removing, shuffling, and searching for songs.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - **void addSong(String song):** adds a song to the end of the playlist
+    - **String removeSong():** removes and returns the most recently added song
+    - **boolean isEmpty():** reports whether the playlist has no songs
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
-  - **Additional Considerations** (*note*: "I don't know" is an acceptable
-    answer for each of the following questions):
-    - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
-    - Would this component rely on any internal classes (e.g., `Map.Pair`)?
-      Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
-    - Would this component need any enums or constants (e.g.,
-      `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
-    - Can you implement your secondary methods using your kernel methods?
-      Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+    - **void shuffle():** rearranges songs randomly in the playlist
+    - **void moveSong(int from, int to):** reorders a song from one position to another
+    - **boolean containsSong(String song):** reports if a given song is in the playlist
+    - **int size():** reports the number of songs
 
-- Component Design #2: <!-- TODO: give component a name then delete this comment -->
-  - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
-  - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
-  - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - yes, since songs can be added and removed.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - possibly, if songs are represented with a Song class containing "data on data" (e.g., artist, duration).
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - could use constants for playlist limits (e.g., MAX_SIZE).
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - yes; for example, size() can be implemented by repeatedly removing songs and counting, then restoring them.
 
-- Component Design #3: <!-- TODO: give component a name then delete this comment -->
+- Component Design #2: LogicGate
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - This component models basic logic gates (AND, OR, NOT, XOR) used in digital circuits. The kernel focuses on simple boolean input-output behavior, while the secondary methods allow combining gates into more complex circuits.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - **void setInputs(Sequence <'T'> inputs):** sets the input values for the gate
+    - **boolean output():** evaluates the gate and returns its Boolean result.
+    - **String type():** reports the type of gate (e.g., AND, OR, XOR, NOT).
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - **boolean evaluate(Sequence<'T'> inputs):** evaluates the gate given a sequence of input values
+    - **Sequence<'T'> truthTable():** returns the truth table of the gate as a sequence of input-output mappings
+    - **void displayTruthTable():** outputs the truth table in readable format
+
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - yes, because the setInputs method changes the internal state.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I don't know.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - yes, an enum like GateType {AND, OR, NOT, XOR} would define the gate types.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - yes; for example, evaluate(inputs) simply calls setInputs(inputs) and then output().
+
+- Component Design #3: Clothing
+  - **Description**:
+    - This component models clothing items to allow the customization of outfits. The kernel defines basic storage of clothing pieces, while the secondary methods provide outfit-building and filtering by attributes (color, size, type).
+  - **Kernel Methods**:
+    - **void addItem(String item):** adds a clothing item
+    - **String removeItem():** removes and returns the most recently added item
+    - **boolean isEmpty():** reports whether the wardrobe is empty
+  - **Secondary Methods**:
+    - **void createOutfit():** builds an outfit from selected clothing pieces
+    - **boolean containsItem(String item):** reports if the wardrobe has a given item
+    - **List<'T'> filterByCategory(String category):** returns items of a specific type (e.g., shirts, shoes)
+    - **int size():** reports the number of clothing items
+
+  - **Additional Considerations** (*note*: "I don't know" is an acceptable
+    answer for each of the following questions):
+    - Would this component be mutable? Answer and explain:
+      - yes, since clothing items can be added and removed.
+    - Would this component rely on any internal classes (e.g., `Map.Pair`)?
+      Answer and explain:
+      - I'm not sure, but potentially, if items have multiple attributes like color, size, or length for clothing items.
+    - Would this component need any enums or constants (e.g.,
+      `Program.Instruction`)? Answer and explain:
+      - yes, could use enums for clothing categories (e.g., enum Category {SHIRT, PANTS, SHOES}).
+    - Can you implement your secondary methods using your kernel methods?
+      Answer, explain, and give at least one example:
+      - yes; for example, filterByCategory() can iterate through kernel-stored items and select those matching the category.
 
 ## Post-Assignment
 
@@ -288,13 +313,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/) of
 the following form: YYYY.0M.0D.
 
-## YYYY.MM.DD
+## 2025.09.19
 
 ### Added
 
-- Designed a <!-- insert name of component 1 here --> component
-- Designed a <!-- insert name of component 2 here --> component
-- Designed a <!-- insert name of component 3 here --> component
+- Designed a MusicPlaylist component
+- Designed a LogicGate component
+- Designed a Clothing component
 ```
 
 Here `YYYY.MM.DD` would be the date of your submission, such as 2024.04.21.
