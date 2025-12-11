@@ -77,7 +77,20 @@ the following form: YYYY.0M.0D.
 [2024.08.07]: https://github.com/jrg94/portfolio-project/compare/v2024.01.07...v2024.08.07
 [2024.01.07]: https://github.com/jrg94/portfolio-project/releases/tag/v2024.01.07
 
-## [Unreleased]
+## Unreleased
+## [2025.09.19]
+
+### Added
+
+- Created three component designs: MusicPlaylist, LogicGate, and Clothing
+- Documented kernel and secondary methods for each design
+- Added initial considerations for mutability, internal structures, and feasibility
+
+### Updated
+
+- Refined component descriptions based on alignment with personal interests and practical feasibility
+- Updated design details to better fit the OSU component discipline and method layering structure
+
 
 ## [2025.10.09]
 
@@ -90,3 +103,13 @@ the following form: YYYY.0M.0D.
 ### Updated
 
 - Updated design choice based on feasibility and personal interest
+
+## [2025.12.10]
+
+### Added
+
+- Designed kernel and enhanced interfaces for MusicPlaylist component, including full contracts and JavaDoc comments
+
+### Updated
+
+- Refined component design after the proof-of-concept to clearly separate kernel and enhanced behaviors
