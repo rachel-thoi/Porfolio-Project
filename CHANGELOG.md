@@ -76,3 +76,17 @@ the following form: YYYY.0M.0D.
 [unreleased]: https://github.com/jrg94/portfolio-project/compare/v2024.08.07...HEAD
 [2024.08.07]: https://github.com/jrg94/portfolio-project/compare/v2024.01.07...v2024.08.07
 [2024.01.07]: https://github.com/jrg94/portfolio-project/releases/tag/v2024.01.07
+
+## [Unreleased]
+
+## [2025.10.09]
+
+### Added
+
+- Implemented a proof-of-concept `MusicPlaylist` component
+- Added several playlist operations (add, remove, shuffle, move, search)
+- Added a `main` method demonstrating the component’s behavior and usefulness
+
+### Updated
+
+- Updated design choice based on feasibility and personal interest
