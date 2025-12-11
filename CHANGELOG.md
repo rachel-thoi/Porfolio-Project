@@ -77,8 +77,7 @@ the following form: YYYY.0M.0D.
 [2024.08.07]: https://github.com/jrg94/portfolio-project/compare/v2024.01.07...v2024.08.07
 [2024.01.07]: https://github.com/jrg94/portfolio-project/releases/tag/v2024.01.07
 
-## Unreleased
-## [2025.09.19]
+## 2025.09.19
 
 ### Added
 
@@ -92,7 +91,7 @@ the following form: YYYY.0M.0D.
 - Updated design details to better fit the OSU component discipline and method layering structure
 
 
-## [2025.10.09]
+## 2025.10.09
 
 ### Added
 
@@ -104,7 +103,7 @@ the following form: YYYY.0M.0D.
 
 - Updated design choice based on feasibility and personal interest
 
-## [2025.12.10]
+## 2025.12.10
 
 ### Added
 
@@ -123,3 +122,24 @@ the following form: YYYY.0M.0D.
 ### Updated
 
 - Refined MusicPlaylist design and contracts based on abstract-class implementation
+
+## 2025.12.10
+
+### Added
+
+- Designed kernel implementation MusicPlaylist1L using a Sequence<String> representation
+
+### Updated
+
+- Clarified the convention and correspondence for the MusicPlaylist component to match the kernel implementation
+
+## 2025.12.10
+
+### Added
+- Designed test suite for MusicPlaylist component, including kernel and abstract class tests.
+- Added two different use cases demonstrating how the MusicPlaylist component can be used in practice.
+- Added documentation and polished project structure for final portfolio submission.
+
+### Updated
+- Refined overall design to improve clarity, contract consistency, and code readability across all component files.
+- Updated README and documentation files to reflect the completed component and its usage.

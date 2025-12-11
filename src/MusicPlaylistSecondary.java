@@ -1,21 +1,20 @@
 /**
  * Secondary (abstract) implementation of the MusicPlaylist component.
  *
- * This class implements all *enhanced* methods (and common Object methods)
- * using ONLY the kernel methods (addSong, removeSong, isEmpty) and the Standard
- * methods (clear, newInstance, transferFrom). It does NOT know anything about
- * the underlying representation.
+ * This class implements all enhanced methods (and common Object methods) using
+ * ONLY the kernel methods and the Standard methods. It has no access to the
+ * underlying representation; that will be handled by a concrete primary class
+ * later (e.g., MusicPlaylist1).
  *
  * @author Rachel Thoi
  */
 public abstract class MusicPlaylistSecondary implements MusicPlaylist {
 
     /**
-     * No-argument constructor.
+     * Protected constructor.
      */
     protected MusicPlaylistSecondary() {
-        // Nothing to initialize; representation is handled in the
-        // concrete primary class later (e.g., MusicPlaylist1).
+        // Representation is created/managed in the concrete primary class.
     }
 
     // --------------------------------------------------------------
@@ -24,9 +23,9 @@ public abstract class MusicPlaylistSecondary implements MusicPlaylist {
 
     /**
      * Copies all songs from {@code source} to {@code destination}, preserving
-     * the order of songs in {@code source}.
-     *
-     * This method uses only kernel + Standard methods.
+     * the order of songs in {@code source}. Both playlists are MusicPlaylist
+     * values and are restored to their original contents (source is unchanged
+     * when this method returns).
      *
      * @param source
      *            playlist to copy from
@@ -38,28 +37,20 @@ public abstract class MusicPlaylistSecondary implements MusicPlaylist {
         MusicPlaylist temp1 = source.newInstance();
         MusicPlaylist temp2 = source.newInstance();
 
-        /*
-         * Move songs from source -> temp1 while counting. Order is reversed in
-         * temp1.
-         */
+        // Move source -> temp1 (reverses order)
         while (!source.isEmpty()) {
             String s = source.removeSong();
             temp1.addSong(s);
         }
 
-        /*
-         * Move songs from temp1 -> temp2 (restores original order), and into
-         * destination as we go.
-         */
+        // Move temp1 -> temp2 and destination (restores original order)
         while (!temp1.isEmpty()) {
             String s = temp1.removeSong();
-            temp2.addSong(s); // temp2 now has original order
+            temp2.addSong(s);
             destination.addSong(s);
         }
 
-        /*
-         * Restore songs back into source from temp2 so source is unchanged.
-         */
+        // Restore source from temp2
         while (!temp2.isEmpty()) {
             String s = temp2.removeSong();
             source.addSong(s);
@@ -67,7 +58,7 @@ public abstract class MusicPlaylistSecondary implements MusicPlaylist {
     }
 
     // --------------------------------------------------------------
-    // Enhanced methods
+    // Enhanced methods (implemented using kernel + Standard only)
     // --------------------------------------------------------------
 
     @Override
@@ -77,14 +68,14 @@ public abstract class MusicPlaylistSecondary implements MusicPlaylist {
         MusicPlaylist temp1 = this.newInstance();
         MusicPlaylist temp2 = this.newInstance();
 
-        // Move everything to temp1, counting
+        // Move everything from this -> temp1, counting
         while (!this.isEmpty()) {
             String s = this.removeSong();
             temp1.addSong(s);
             count++;
         }
 
-        // Restore order using temp2
+        // Restore order using temp2, then back to this
         while (!temp1.isEmpty()) {
             String s = temp1.removeSong();
             temp2.addSong(s);
@@ -104,7 +95,7 @@ public abstract class MusicPlaylistSecondary implements MusicPlaylist {
         MusicPlaylist temp1 = this.newInstance();
         MusicPlaylist temp2 = this.newInstance();
 
-        // Walk through playlist, looking for the song
+        // Scan through playlist, looking for the song
         while (!this.isEmpty()) {
             String s = this.removeSong();
             temp1.addSong(s);
@@ -129,17 +120,13 @@ public abstract class MusicPlaylistSecondary implements MusicPlaylist {
     @Override
     public void moveSong(int from, int to) {
         /*
-         * STARTER STUB: This is left as a TODO for you to implement.
+         * TODO: implement using only: - addSong - removeSong - isEmpty - clear
+         * - newInstance - transferFrom
          *
-         * Requirements (from your enhanced interface): - Use only addSong,
-         * removeSong, isEmpty, clear, newInstance, transferFrom. - Move the
-         * song currently at index 'from' to index 'to' and keep all other songs
-         * in the same relative order.
-         *
-         * Suggested approach: - Use one or two temporary playlists. - Walk
-         * through the playlist while counting indices. - When you reach 'from',
-         * save that song separately. - Rebuild the playlist inserting the saved
-         * song at position 'to'.
+         * Suggested idea: - Use one or two temporary playlists. - Walk through
+         * the songs while counting indices. - When you reach index 'from',
+         * store that song separately. - Rebuild the playlist inserting that
+         * stored song at index 'to'.
          */
 
         throw new UnsupportedOperationException("moveSong not implemented yet");
@@ -148,13 +135,12 @@ public abstract class MusicPlaylistSecondary implements MusicPlaylist {
     @Override
     public void shuffle() {
         /*
-         * STARTER STUB: This is left as a TODO for you to implement.
+         * TODO: implement using only kernel + Standard methods.
          *
-         * Simple approach: - Use size() to know how many songs there are. -
-         * Repeatedly choose a random index, pull that song out into a temporary
-         * playlist, and rebuild.
-         *
-         * Remember: you may only use kernel + Standard methods.
+         * One simple approach: - Compute n = size(). - Repeatedly choose a
+         * random index k in [0, n-1], remove the k-th song into a temporary
+         * playlist, and rebuild. - Make sure you preserve all songs and end
+         * with the same multiset.
          */
 
         throw new UnsupportedOperationException("shuffle not implemented yet");
@@ -172,8 +158,8 @@ public abstract class MusicPlaylistSecondary implements MusicPlaylist {
         MusicPlaylist temp = this.newInstance();
         copyPlaylist(this, temp);
 
+        int n = temp.size();
         int i = 0;
-        int n = temp.size(); // uses the enhanced size() we wrote above
 
         while (!temp.isEmpty()) {
             String s = temp.removeSong();
@@ -199,7 +185,7 @@ public abstract class MusicPlaylistSecondary implements MusicPlaylist {
 
         MusicPlaylist other = (MusicPlaylist) obj;
 
-        // First, compare sizes
+        // Compare sizes first
         if (this.size() != other.size()) {
             return false;
         }
@@ -209,11 +195,9 @@ public abstract class MusicPlaylistSecondary implements MusicPlaylist {
         MusicPlaylist tempThis = this.newInstance();
         MusicPlaylist tempOther = other.newInstance();
 
-        // Copy both playlists into temps (preserving originals)
         copyPlaylist(this, tempThis);
         copyPlaylist(other, tempOther);
 
-        // Compare elements in order
         while (!tempThis.isEmpty() && equal) {
             String s1 = tempThis.removeSong();
             String s2 = tempOther.removeSong();
@@ -227,11 +211,7 @@ public abstract class MusicPlaylistSecondary implements MusicPlaylist {
 
     @Override
     public int hashCode() {
-        /*
-         * Optional, but nice to include if you override equals. This is a
-         * simple starter implementation; you can refine it.
-         */
-
+        // Simple hashCode consistent with equals
         int result = 17;
 
         MusicPlaylist temp = this.newInstance();

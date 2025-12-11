@@ -1,5 +1,3 @@
-import components.standard.Standard;
-
 /**
  * Kernel interface for a MusicPlaylist component.
  *
