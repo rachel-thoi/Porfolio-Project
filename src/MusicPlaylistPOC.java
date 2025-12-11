@@ -137,6 +137,9 @@ public class MusicPlaylistPOC {
     /**
      * Main method to demonstrate the value of the MusicPlaylistPOC component.
      * This acts as a minimal client that shows off a variety of methods.
+     *
+     * @param args
+     *            command-line arguments (not used)
      */
     public static void main(String[] args) {
         MusicPlaylistPOC playlist = new MusicPlaylistPOC();
